@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+db:
+  dsn: root:root123@tcp(raspberrypi:3306)/go_web_demo?charset=utf8mb4&parseTime=True&loc=UTC
+
+jwt:
+  secret: go-web-secret
+  expire: 7200
