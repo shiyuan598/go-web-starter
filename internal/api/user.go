@@ -13,6 +13,14 @@ type LoginReq struct {
 	Password string `json:"password" binding:"required"`
 }
 
+// Login godoc
+// @Summary 登录
+// @Tags Auth
+// @Accept json
+// @Produce json
+// @Param data body LoginReq true "登录参数"
+// @Success 200 {object} response.Result
+// @Router /login [post]
 func Login(c *gin.Context) {
 	var req LoginReq
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -28,11 +36,25 @@ func Login(c *gin.Context) {
 	response.OK(c, gin.H{"token": token})
 }
 
+// ListUsers godoc
+// @Summary 用户列表
+// @Tags User
+// @Security ApiKeyAuth
+// @Success 200 {object} response.Result
+// @Router /users [get]
 func ListUsers(c *gin.Context) {
 	users := dao.List()
 	response.OK(c, users)
 }
 
+// CreateUser godoc
+// @Summary 创建用户
+// @Tags User
+// @Accept json
+// @Security ApiKeyAuth
+// @Param data body dao.UserCreateReq true "用户信息"
+// @Success 200 {object} response.Result
+// @Router /users [post]
 func CreateUser(c *gin.Context) {
 	var u dao.UserCreateReq
 	if err := c.ShouldBindJSON(&u); err != nil {

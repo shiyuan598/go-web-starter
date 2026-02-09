@@ -1,0 +1,29 @@
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ===== Go =====
+# 编译产物
+*.exe
+*.out
+*.test
+*.prof
+bin/
+dist/
+
+# Go workspace / cache
+/go.work
+/go.work.sum
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Swagger =====
+# swag 自动生成
+docs/
+

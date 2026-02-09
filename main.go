@@ -1,5 +1,6 @@
 package main
 
+
 import (
 	"go-web-starter/internal/api"
 	"go-web-starter/internal/middleware"
@@ -17,6 +18,11 @@ import (
 // @version 1.0
 // @host localhost:8080
 // @BasePath /api
+
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
+
 func main() {
 	viper.SetConfigFile("config/config.yaml")
 	_ = viper.ReadInConfig()
