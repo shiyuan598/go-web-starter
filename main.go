@@ -1,6 +1,5 @@
 package main
 
-
 import (
 	"go-web-starter/internal/api"
 	"go-web-starter/internal/middleware"
@@ -9,9 +8,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
-	_ "go-web-starter/docs"
-	ginSwagger "github.com/swaggo/gin-swagger"
 	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	_ "go-web-starter/docs"
+	"go.uber.org/zap"
 )
 
 // @title Go Web Starter
@@ -47,6 +47,7 @@ func main() {
 		}
 	}
 
-	r.Run(":8080")
-	println("Server started on port 8080")
+	if err := r.Run(":" + viper.GetString("server.port")); err != nil {
+		logger.Log.Error("server start failed", zap.Error(err))
+	}
 }

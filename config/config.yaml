@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 9001
 
 db:
   dsn: root:root123@tcp(raspberrypi:3306)/go_web_demo?charset=utf8mb4&parseTime=True&loc=UTC

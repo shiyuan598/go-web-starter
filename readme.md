@@ -89,7 +89,7 @@ VALUES ('admin', '123456');
 
 ```yaml
 server:
-  port: 8080
+  port: 9001
 
 db:
   dsn: root:root123@tcp(raspberrypi:3306)/go_web_demo?charset=utf8mb4&parseTime=True&loc=UTC
@@ -140,7 +140,12 @@ go run main.go
 默认地址：
 
 ```
-http://localhost:8080
+http://localhost:9001/api
+```
+
+构建二进制：
+```bash
+GOOS=linux GOARCH=arm64 go build -o ./bin/go-web-starter main.go
 ```
 
 ---
@@ -152,7 +157,7 @@ http://localhost:8080
 浏览器访问：
 
 ```
-http://localhost:8080/swagger/index.html
+http://localhost:9001/swagger/index.html
 ```
 
 可以直接在线调试接口。
