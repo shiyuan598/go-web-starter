@@ -16,7 +16,6 @@ import (
 
 // @title Go Web Starter
 // @version 1.0
-// @host localhost:8080
 // @BasePath /api
 
 // @securityDefinitions.apikey ApiKeyAuth
