@@ -1,24 +1,23 @@
 package main
 
 import (
+	"go-web-starter/docs"
 	"go-web-starter/internal/api"
 	"go-web-starter/internal/middleware"
 	"go-web-starter/pkg/db"
 	"go-web-starter/pkg/logger"
 
+	_ "go-web-starter/docs"
+
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	_ "go-web-starter/docs"
 	"go.uber.org/zap"
 )
 
 // @title Go Web Starter
 // @version 1.0
-// @host localhost:8080
-// @BasePath /api
-
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header
 // @name Authorization
@@ -26,6 +25,13 @@ import (
 func main() {
 	viper.SetConfigFile("config/config.yaml")
 	_ = viper.ReadInConfig()
+
+	// 动态设置 swagger basePath
+	basePath := viper.GetString("server.swagger_base_path")
+	if basePath == "" {
+		basePath = "/api"
+	}
+	docs.SwaggerInfo.BasePath = basePath
 
 	logger.Init()
 	db.Init()

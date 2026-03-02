@@ -148,6 +148,8 @@ http://localhost:9001/api
 GOOS=linux GOARCH=arm64 go build -o ./bin/go-web-starter main.go
 ```
 
+生产部署nginx代理二级路由后修改swagger_base_path，确保swagger页面能正常调试。
+
 ---
 
 ## 七、接口说明与测试
